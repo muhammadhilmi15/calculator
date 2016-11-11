@@ -2,14 +2,13 @@
 <html>
 <head>
     <title>Kalkulator Sederhana</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <?php
     if(isset($_POST['hitung'])){
         $bil1 = $_POST['bil1'];
         $bil2 = $_POST['bil2'];
-        $operasi = $_POST['operasi'];
+        $operasi = $_POST['operator'];
         switch ($operasi) {
             case '+':
             $hasil = $bil1+$bil2;
@@ -26,32 +25,48 @@
         }
     }
     ?>
-    <div class="kalkulator">
-        <h2 class="judul">KALKULATOR</h2>
-        <form method="post" action="index.php">
-            <input type="text" name="bil1" class="bil" autocomplete="off" placeholder="Masukkan Bilangan Pertama">
-            <input type="text" name="bil2" class="bil" autocomplete="off" placeholder="Masukkan Bilangan Kedua">
-            <!-- <fieldset name="operasi" class="fieldset">
-                <legend>Operator</legend>
-                <input type="radio" class="form-radio" value="tambah"> <label for="rd1">+</label>
-                <input type="radio" class="form-radio" value="kurang"> <label for="rd2">-</label>
-                <input type="radio" class="form-radio" value="kali"> <label for="rd3">x</label>
-                <input type="radio" class="form-radio" value="bagi"> <label for="rd3">/</label>
-            </fieldset> -->
-            <select class="opt" name="operasi">
-                <option value="+">+</option>
-                <option value="-">-</option>
-                <option value="x">x</option>
-                <option value="/">/</option>
-            </select>
-            <input type="submit" name="hitung" value="Hitung" class="tombol">
-        </form>
-        <?php if(isset($_POST['hitung'])){ ?>
-            <label class="texthasil"><?php echo "Hasil dari ".$bil1." ".$operasi." ".$bil2." = ";?></label>
-            <input type="text" value="<?php echo $hasil; ?>" class="bil">
-            <?php }else{ ?>
-                <input type="text" value="0" class="bil">
-            <?php } ?>
-        </div>
-    </body>
+    <form method="post" action="index.php">
+        <table width="30%" height="60%" border="0" align="center">
+            <tr align="center">
+                <td colspan="4"><b>Kalkulator</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Angka Pertama</td>
+                <td><input name="bil1" type="text" size="30"></td>
+            </tr>
+            <tr>
+                <td>Angka Kedua</td>
+                <td><input name="bil2" type="text" size="30"></td>
+            </tr>
+            <tr>
+                <td>Operator</td>
+                <td>
+                    <input type="radio" name="operator" value="+"> +
+                    <input type="radio" name="operator" value="-"> -
+                    <input type="radio" name="operator" value="x"> x
+                    <input type="radio" name="operator" value="/"> /
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Hitung" name="hitung"></td>
+            </tr>
+            <tr>
+                <td>Hasil</td>
+                <td>
+                    <?php if(isset($_POST['hitung'])){ ?>
+                        <label class="texthasil"><?php echo "Hasil dari ".$bil1." ".$operasi." ".$bil2." = ";?></label><br>
+                        <input type="text" size="30" value="<?php echo $hasil; ?>">
+                    <?php }else{ ?>
+                        <input type="text" size="30" value="0">
+                    <?php } ?>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
 </html>
