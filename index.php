@@ -52,11 +52,7 @@
                 </td>
             </tr>
             <tr>
-                <td></td>
                 <td><input type="submit" value="Hitung" name="hitung"></td>
-            </tr>
-            <tr>
-                <td>Hasil</td>
                 <td>
                     <?php if(isset($_POST['hitung'])){ ?>
                         <label class="texthasil"><?php echo "Hasil dari ".$bil1." ".$operasi." ".$bil2." = ";?></label><br>
